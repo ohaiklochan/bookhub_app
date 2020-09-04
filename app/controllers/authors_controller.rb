@@ -1,8 +1,10 @@
 class AuthorsController < ApplicationController
   def new
+    @authors = Author.new
   end
 
   def create
+    @authors = Author.new(author_params)
   end
 
   def edit
