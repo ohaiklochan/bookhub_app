@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'sessions/omniauth'
   get 'readers/new'
   get 'readers/create'
   get 'readers/edit'

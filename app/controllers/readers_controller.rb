@@ -1,4 +1,6 @@
 class ReadersController < ApplicationController
+  before_action :find_reader, only: [:show, :edit, :update, :destroy]
+
   def new
     @reader = Reader.new
   end
@@ -15,22 +17,35 @@ class ReadersController < ApplicationController
   end
 
   def edit
+    validate
   end
 
   def update
+    if @reader.valid?
+      @reader.update(reader: params[:reader][:username])
+      redirect_to reader_path(@reader)
+    else 
+      redirect_to edit_reader_path 
+    end
   end
 
   def destroy
-  end
-
-  def index
+    @reader.destroy 
+    redirect_to root_path 
+    flash[:error] = "Account deleted."
   end
 
   def show
+    validate
   end
 
   private
 
   def reader_params
     params.require(:reader).permit(:username, :password)
+  end
+
+  def find_reader
+    @reader = Reader.find_by_id(params[:id])
+  end
 end
