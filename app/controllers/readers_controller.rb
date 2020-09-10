@@ -5,7 +5,7 @@ class ReadersController < ApplicationController
   end
 
   def create
-    @reader = Reader.new(user_params)
+    @reader = Reader.new(reader_params)
     if @reader.save
       session[:reader_id] = @reader.id
       redirect_to user_path(@reader)
@@ -21,7 +21,7 @@ class ReadersController < ApplicationController
 
   private
 
-    def user_params
+    def reader_params
       params.require(@reader).permit(:username, :email, :password, :admin)
     end
 
