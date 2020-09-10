@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'pry'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
@@ -23,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
+gem 'omniauth-google-oauth2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
