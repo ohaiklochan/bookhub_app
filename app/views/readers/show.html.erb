@@ -1,2 +1,21 @@
-<h1>Readers#show</h1>
-<p>Find me in app/views/readers/show.html.erb</p>
+<div class="info">
+  <h1>Hello, <%= current_reader.username %>!</h1>
+  <h2>Check out the latest book reviews...</h2>
+</div>
+
+<div class="info">
+  <% @reviews.each do |review| %>
+    <%= link_to "#{review.title}", review_path(review) %>
+    <br>
+    <%= display_book_link_in_review(review) %>
+    Rating: <%= review.rating %>
+    <br>
+    <%= display_reader_link_in_review(review) %>
+    <%= review_date(review) %>
+    <br>
+    <%= review.content.truncate(350) %>
+    <br>
+    <%= display_edit_and_delete_links(review) %>
+    <br>
+  <% end %>
+</div>

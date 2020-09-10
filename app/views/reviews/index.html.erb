@@ -1,2 +1,13 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<div class="info">
+  <h1><%= reviews_display_header %></h1>
+</div>
+
+<div class="info">
+  <%= no_reviews_message %>
+  <% @reviews.each do |review| %>
+    <%= render partial: "reviews", :locals => {:review => review} %>
+    <br>
+  <% end %>
+</div>
+
+<%= write_review_for_book_link %>

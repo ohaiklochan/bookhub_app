@@ -1,2 +1,5 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<h1>Edit Review for <%= current_review.book.title %></h1>
+
+<%= render partial: "layouts/errors", :locals => {:object => current_review} %>
+
+<%= render partial: "form", :locals => {:review => current_review} %>
