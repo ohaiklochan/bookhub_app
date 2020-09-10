@@ -13,3 +13,106 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ h1 {
+   text-align: center;
+   margin-bottom: 25px;
+   font-weight: 300;
+ }
+ 
+ h2 {
+   text-align: center;
+   margin: 25px 0px;
+   font-weight: 300;
+ }
+ 
+ h3 {
+   text-align: center;
+   font-size: 1.5em;
+   font-weight: 300;
+ }
+ 
+ a {
+   color: #325aa8;
+ }
+ 
+ form {
+   margin-left: 22%;
+   margin-right: 22%;
+ }
+ 
+ body {
+   padding-top: 60px;
+ }
+ 
+ .container-fluid {
+   width: 100%;
+   padding-right: 25px;
+   padding-left: 25px;
+   padding-bottom: 25px;
+   margin-right: auto;
+   margin-left: auto;
+ }
+ 
+ .form-row {
+   padding-right: 5px;
+   margin: 5px;
+ }
+ 
+ .search-form {
+   margin-left: 10px;
+ }
+ 
+ .error-list {
+   text-indent: 75px;
+ }
+ 
+ #error_explanation {
+   background-color: #eeeeee;
+   padding-top: 20px;
+   padding-bottom: 3px;
+   margin-bottom: 25px;
+   margin-left: 22%;
+   margin-right: 22%;
+   border-radius: 7px;
+ }
+ 
+ .info {
+   background-color: #eeeeee;
+   text-align: left;
+   padding-top: 25px;
+   padding-right: 25px;
+   padding-bottom: 1px;
+   padding-left: 25px;
+   margin-bottom: 25px;
+   border-radius: 7px;
+ }
+ 
+ .btn-secondary {
+   padding: 0.175rem 1rem;
+   font-family: sans-serif;
+   margin-right: 10px;
+ }
+ 
+ .btn-outline-secondary {
+   border-color: #6c757d;
+   padding: 0.175rem 1rem;
+   font-family: sans-serif;
+   margin-right: 10px;
+ }
+ 
+ .message {
+   color: #aa00e3;
+   text-align: center;
+   font-weight: 300;
+   font-size: 1.5em;
+   margin-top: 10px;
+   margin-bottom: 25px;
+ }
+ 
+ .img-responsive {
+   width: 100%;
+   margin-top: 15px;
+   margin-bottom: 25px;
+ }
