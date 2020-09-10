@@ -62,20 +62,20 @@ class ReviewsController < ApplicationController
       review = Review.find_by_id(params[:id])
     end
 
-    def set_movies_array
-      @movies = Movie.alpha
+    def set_books_array
+      @books = Book.alpha
     end
 
     def set_reviews_array
-      if params[:user_id] && current_user.id.to_s == params[:user_id]
-        @reviews = current_user.reviews.newest_to_oldest
-      elsif params[:user_id] && @user = User.find_by_id(params[:user_id])
+      if params[:reader_id] && current_reader.id.to_s == params[:reader_id]
+        @reviews = current_reader.reviews.newest_to_oldest
+      elsif params[:reader_id] && @user = Reader.find_by_id(params[:reader_id])
         @reviews = @user.reviews.newest_to_oldest
-      elsif params[:movie_id] && @movie = Movie.find_by_id(params[:movie_id])
-        @reviews = @movie.reviews.newest_to_oldest
+      elsif params[:book_id] && @book = Book.find_by_id(params[:book_id])
+        @reviews = @book.reviews.newest_to_oldest
       else
-        @error = "That movie doesn't exist." if params[:movie_id]
-        @error = "That user doesn't exist." if params[:user_id]
+        @error = "That book doesn't exist." if params[:book_id]
+        @error = "That user doesn't exist." if params[:reader_id]
         @reviews = Review.all.newest_to_oldest
       end
     end

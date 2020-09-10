@@ -1,51 +1,28 @@
 class ReadersController < ApplicationController
-  before_action :find_reader, only: [:show, :edit, :update, :destroy]
 
   def new
     @reader = Reader.new
   end
 
   def create
-    @reader = Reader.new(reader_params)
+    @reader = Reader.new(user_params)
     if @reader.save
       session[:reader_id] = @reader.id
-      redirect_to books_path(@reader)
+      redirect_to user_path(@reader)
     else
-      redirect_to new_reader_path
-      flash[:error] = "Username is not available. Please try again"
+      render :new
     end
-  end
-
-  def edit
-    validate
-  end
-
-  def update
-    if @reader.valid?
-      @reader.update(reader: params[:reader][:username])
-      redirect_to reader_path(@reader)
-    else 
-      redirect_to edit_reader_path 
-    end
-  end
-
-  def destroy
-    @reader.destroy 
-    redirect_to root_path 
-    flash[:error] = "Account deleted."
   end
 
   def show
-    validate
+    redirect_if_not_logged_in
+    @reviews = Review.newest_to_oldest.first(10)
   end
 
   private
 
-  def reader_params
-    params.require(:reader).permit(:username, :password)
-  end
+    def user_params
+      params.require(@reader).permit(:username, :email, :password, :admin)
+    end
 
-  def find_reader
-    @reader = Reader.find_by_id(params[:id])
-  end
 end

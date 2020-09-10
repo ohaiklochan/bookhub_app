@@ -1,40 +1,29 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_reader, :logged_in?, :validate, :owned_by_reader?, :email_striper, :current_book
+    helper_method :current_reader, :logged_in?, :sort_direction
 
-    def current_reader
-        @current_reader ||= Reader.find_by_id(session[:reader_id])
-    end
-
-    def logged_in?
+    private
+      def current_reader
+        current_reader ||= Reader.find_by_id(session[:reader_id]) if session[:reader_id]
+      end
+  
+      def logged_in?
         !!current_reader
-    end
-
-
-    def validate 
-        unless @reader.id == current_reader.id 
-            flash[:error] = "You do not have access."
-            redirect_to book_path
-        end
-    end 
-
-    def owned_by_reader?(books) 
-        if @book!= nil 
-            if current_reader.id == @book.reader_id
-                return true 
-            else 
-                false 
-            end
-        end
-    end
-
-
-    def email_striper(email)
-        username = email.split(/@gmail.com/)
-        username[0]
-    end
-
-    def current_book
-        @book = Book.find_by_id(params[:id])
-    end
+      end
+  
+      def redirect_if_not_logged_in
+        redirect_to root_path if !logged_in?
+      end
+  
+      def redirect_if_logged_in
+        redirect_to reader_path(current_reader) if logged_in?
+      end
+  
+      def redirect_if_not_admin
+        redirect_to reader_path(current_reader) if !current_reader.admin
+      end
+  
+      def sort_direction
+        %w[asc, desc].include?(params[:direction]) ? params[:direction] : "asc"
+      end
 
 end
