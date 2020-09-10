@@ -1,5 +1,5 @@
 class Author < ApplicationRecord
-    has_many :books, through: :readers, :dependent => :destroy
+    has_many :books, through: :readers
     belongs_to :readers
     validates_presence_of :first_name, :last_name
   

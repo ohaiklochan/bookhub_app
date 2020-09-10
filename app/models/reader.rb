@@ -1,6 +1,6 @@
 class Reader < ApplicationRecord
     has_many :authors
-    has_many :reviews
+    has_many :reviews, through: :books
     has_many :books, through: :authors
     has_secure_password
     validates_presence_of :username, :email

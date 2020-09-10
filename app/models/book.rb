@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
     belongs_to :reader
-    has_many :authors
+    belongs_to :authors
     has_many :reviews
     has_many :readers, through: :reviews
     validates_presence_of :title, :genre, :description
