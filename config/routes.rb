@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   get '/', to: 'application#welcome' 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
-  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  get '/auth/facebook/callback' => 'sessions#create'
   
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]
-  resources :journeys do 
+  resources :reviews do 
   resources :comments, only: [:new, :create, :show, :index]
   end
 
