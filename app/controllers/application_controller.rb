@@ -1,29 +1,41 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_reader, :logged_in?, :sort_direction
+  helper_method :current_user, :logged_in?, :validate, :owned_by_user?, :email_clear, :current_review
 
-    private
-      def current_reader
-        current_reader ||= Reader.find_by_id(session[:reader_id]) if session[:reader_id]
-      end
   
-      def logged_in?
-        !!current_reader
+  def current_user
+      @current_user ||= User.find_by_id(session[:user_id])
+  end
+
+  def logged_in?
+      !!current_user
+  end
+
+
+  def validate 
+      unless @user.id == current_user.id 
+          flash[:error] = "Restricted area."
+          redirect_to reviews_path
       end
-  
-      def redirect_if_not_logged_in
-        redirect_to root_path if !logged_in?
+  end 
+
+  def owned_by_user?(reviews) 
+      if @review != nil 
+          if current_user.id == @review.user_id
+              return true 
+          else 
+              false 
+          end
       end
-  
-      def redirect_if_logged_in
-        redirect_to reader_path(current_reader) if logged_in?
-      end
-  
-      def redirect_if_not_admin
-        redirect_to reader_path(current_reader) if !current_reader.admin
-      end
-  
-      def sort_direction
-        %w[asc, desc].include?(params[:direction]) ? params[:direction] : "asc"
-      end
+  end
+
+
+  def email_clear(email)
+      username = email.split(/@gmail.com/)
+      username[0]
+  end
+
+  def current_review
+      @review = Review.find_by_id(params[:id])
+  end
 
 end
