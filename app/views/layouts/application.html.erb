@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookhubApp</title>
+    <title>bookHub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,93 +11,5 @@
 
   <body>
     <%= yield %>
-  </body>
-</html>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>RailsbookReviews</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <div>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <% if logged_in? && current_user.admin %>
-          <li class="navbar-brand">ADMIN</li>
-        <% end %>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <% if logged_in? %>
-              <li class="nav-item">
-                <%= link_to "Home", user_path(current_user), :class => "nav-link" %>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Reviews
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%= link_to "Write a Review", new_review_path, :class => "dropdown-item" %>
-                  <%= link_to "All Reviews", reviews_path, :class => "dropdown-item" %>
-                </div>
-              </li>
-
-              <% if current_reader.admin %>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Books
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "Add a Book", new_book_path, :class => "dropdown-item" %>
-                    <%= link_to "All Books", books_path, :class => "dropdown-item" %>
-                  </div>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "Books", books_path, :class => "nav-link" %>
-                </li>
-              <% end %>
-
-              <li class="nav-item">
-                <%= link_to "Authors", authors_path, :class => "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Logout", logout_path, :method => "delete", :class => "nav-link" %>
-              </li>
-
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "Home", root_path, :class => "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Sign Up", signup_path, :class => "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Log In", login_path, :class => "nav-link" %>
-              </li>
-
-            <% end %>
-          </ul>
-        </div>
-      </nav>
-    </div>
-
-    <div class="container-fluid">
-      <% if flash[:message] %>
-        <div class="message"><%= flash[:message] %></div>
-      <% end %>
-
-      <div class="message"><%= @error %></div>
-
-      <%= yield %>
-    </div>
   </body>
 </html>
