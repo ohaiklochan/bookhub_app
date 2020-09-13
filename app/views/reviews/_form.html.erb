@@ -1,18 +1,22 @@
-<%= form_for review, :class => "form-group" do |f| %>
-  <% if !review.book %>
-    <%= f.label "Book:" %>
-    <%= collection_select :review, :book_id, @books, :id, :title, {:include_blank => "Please select a book to review"}, :class => "form-control" %><br>
-  <% else %>
-    <%= f.hidden_field :book_id %>
-  <% end %>
-  <%= f.label "Rating (1-5):" %>
-  <%= f.number_field :rating, :class => "form-control" %>
-  <br>
-  <%= f.label "Title:" %>
-  <%= f.text_field :title, :class => "form-control" %>
-  <br>
-  <%= f.label "Review:" %>
-  <%= f.text_area :content, :class => "form-control" %>
-  <br>
-  <%= f.submit review.persisted? ? "Update Review" : "Publish Review", :class => "btn btn-secondary" %>
+<%= render partial:'layouts/errors', locals: {object: @book} %>
+
+<h5><%= flash[:error] %></h5>
+<%= form_for @book do |f| %>
+    <%= f.label 'What is the title of the book you read?' %>
+    <%= f.text_field :title %>
+    <br>
+    <br>
+    <%= f.label 'Please provide a description of the book you read.' %>
+    <%= f.text_field :description %>
+    <br>
+    <br>
+    <%= f.label 'What would you rate the book?' %>
+    <%= f.text_field :rating %>
+    <br>
+    <br>
+    <%= f.label 'What is your review?' %>
+    <%= f.text_field :review %>
+    <br>
+        <br>
+    <%= f.submit "Submit Book" %>
 <% end %>

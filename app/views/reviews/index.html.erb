@@ -1,13 +1,32 @@
-<div class="info">
-  <h1><%= reviews_display_header %></h1>
-</div>
+<%= render 'layouts/footer' %>
 
-<div class="info">
-  <%= no_reviews_message %>
-  <% @reviews.each do |review| %>
-    <%= render partial: "reviews", :locals => {:review => review} %>
+<h3> Welcome <%= current_user.username %>! These are your reviews so far:</h3>
+<h5><%= flash[:error] %></h5>
+<br>
+<% if current_user.reviews.count == 0 %>
+    <h4> You have not written any reviews yet </h4>
+<br>
+<% else %>
+<% current_user.reviews.each do |review| %>
+    <ul>
+        <h3><%= link_to "#{review.title}", review_path(review) %></h3>
+    </ul>
+    <% end %>
+<% end %>
+<br>
+<br>
     <br>
-  <% end %>
-</div>
-
-<%= write_review_for_book_link %>
+<h3 style="color:red;"> || Other Readers' book reviews by rating! ||</h3>
+    <br>
+<% Review.deleted_user %>
+    <% Book.ranked_reviews.each do |b| %>
+        <% if b.user_id != current_user.id  %>
+            <ul>
+                <h3><%= link_to b.title, review_path(b) %> - <%= b.rating %> Rating </h3>
+                    <h4>User: <%= User.find(b.user_id).username %></h4>
+            </ul>
+        <% end %>
+    <% end %>
+<br>
+<br>
+<h3> © 2020 bookHub <h3>

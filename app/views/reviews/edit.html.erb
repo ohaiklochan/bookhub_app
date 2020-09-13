@@ -1,5 +1,3 @@
-<h1>Edit Review for <%= current_review.book.title %></h1>
+<h3> Edit Your Book Review</h3>
 
-<%= render partial: "layouts/errors", :locals => {:object => current_review} %>
-
-<%= render partial: "form", :locals => {:review => current_review} %>
+<%= render partial: 'form'%>
