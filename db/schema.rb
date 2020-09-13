@@ -10,48 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_225009) do
+ActiveRecord::Schema.define(version: 2020_09_13_230004) do
 
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
-    t.string "genre"
-    t.text "bio"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "genre"
-    t.text "description"
-    t.integer "author_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "readers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
-    t.string "password_digest"
-    t.boolean "admin"
-    t.string "uid"
-    t.string "provider"
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text "content"
-    t.integer "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.integer "reader_id", null: false
-    t.integer "book_id", null: false
-    t.index ["book_id"], name: "index_reviews_on_book_id"
-    t.index ["reader_id"], name: "index_reviews_on_reader_id"
+    t.text "description"
+    t.integer "rating"
+    t.text "review"
+    t.integer "user_id"
   end
 
-  add_foreign_key "reviews", "books"
-  add_foreign_key "reviews", "readers"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+  end
+
 end
