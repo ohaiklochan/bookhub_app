@@ -9,15 +9,15 @@
     <% Book.ranked_reviews.each do |b| %>
         <% if b.user_id == current_user.id  %>
             <ul>
-                <h3><%= link_to b.title, review_path(b) %> - <%= b.rating %> Rating </h3>
+                <h3><%= link_to b.title, book_path(b) %> - <%= b.rating %> Rating </h3>
             </ul>
         <% end %>
     <% end %>
 
-<%= button_to "Add a new book review", new_review_path, method: :get %> 
+<%= button_to "Add a new book review", new_book_path, method: :get %> 
 <br>
 <br>
-<%= button_to "See other Readers' Reviews", review_path, method: :get %>
+<%= button_to "See other Readers' Reviews", book_path, method: :get %>
 <br>
 <br>
 <%= button_to "Account Settings", edit_user_path, method: :get %>
