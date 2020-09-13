@@ -1,2 +1,2 @@
-module ReadersHelper
+module UsersHelper
 end
