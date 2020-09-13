@@ -230,6 +230,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   dotenv-rails
   jbuilder (~> 2.7)
+  omniauth
   omniauth-facebook
   omniauth-google-oauth2
   pry

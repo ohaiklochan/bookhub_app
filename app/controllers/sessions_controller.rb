@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def omniauth
     @user = User.find_or_create_by(uid: auth[:uid]) do |u|
-      u.username = email_striper(auth[:info][:email])
+      u.username = email_clear(auth[:info][:email])
       u.password = SecureRandom.hex
     end
     session[:user_id] = @user.id
