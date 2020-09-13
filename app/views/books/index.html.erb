@@ -1,2 +1,14 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1><%= books_display_header %></h1>
+
+<% if !params[:author_id] && !params[:genre_id] %>
+  <%= form_tag books_path, :method => :get, :class => "search-form" do %>
+    <%= label_tag "Search for a book:", nil, :class => "col-form-label" %>
+    <%= text_field_tag :title, params[:title] %>
+
+    <%= submit_tag "Search", :name => nil, :class => "btn btn-outline-dark" %>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= render partial: "books", :locals => {:books => @books} %>
