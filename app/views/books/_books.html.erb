@@ -1,2 +1,19 @@
-<h1>Books#destroy</h1>
-<p>Find me in app/views/books/destroy.html.erb</p>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th style="width: 50%"><%= sortable("title") %><%= sort_image("title") %></th>
+      <th style="width: 25%"><%= sortable("genre") %><%= sort_image("genre") %></th>
+      <th style="width: 25%">Average Rating</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% books.each do |book| %>
+    <tr>
+      <td><%= link_to book.title, book_path(book) %></td>
+      <td><%= book.genre %></td>
+      <td><%= display_average_rating(book) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

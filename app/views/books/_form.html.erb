@@ -1,2 +1,32 @@
-<h1>Books#create</h1>
-<p>Find me in app/views/books/create.html.erb</p>
+<%= form_for book, :class => "form-group" do |f| %>
+  <%= f.label "Title:" %>
+  <%= f.text_field :title, :class => "form-control" %>
+  <br>
+  <%= f.label "Description:" %>
+  <%= f.text_area :description, :class => "form-control" %>
+  <br>
+
+  <%= f.label "Genre(s):" %>
+  <br>
+  <%= f.fields_for :genres do |genre| %>
+    <div class="form-row">
+      <%= genre.text_field :name, :class => "form-control col-md-6" %>
+    </div>
+  <% end %>
+  <br>
+
+  <%= f.label "Written By:" %>
+
+  <%= f.fields_for :authors do |author| %>
+    <div class="form-row">
+      <div class="col">
+        <%= author.text_field :first_name, :class => "form-control", :placeholder => "First name" %>
+      </div>
+      <div class="col">
+        <%= author.text_field :last_name, :class => "form-control", :placeholder => "Last name" %>
+      </div>
+    </div>
+    <% end %>
+    <br>
+  <%= f.submit book.persisted? ? "Update book" : "Add book", :class => "btn btn-secondary" %>
+<% end %>
