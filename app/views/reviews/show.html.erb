@@ -1,26 +1,26 @@
-    <h1><%= @book.title %></h1>
-    <h3>Description: <%= @book.description%>
-    <h3>Review: <%= @book.review%> 
-    <h3>Rating: <%= @book.rating %></h3>
-    <h2> Description: <%= @book.description %></h2>
+    <h1><%= @review.title %></h1>
+    <h3>Description: <%= @review.description%>
+    <h3>Review: <%= @review.review%> 
+    <h3>Rating: <%= @review.rating %></h3>
+    <h2>Description: <%= @review.description %></h2>
     <br>
-    <p>Post created by: <h3><%= @book.user.username %></h3></p>
+    <p>Post created by: <h3><%= @review.user.username %></h3></p>
     <h5><%= flash[:error] %></h5>
     
 <br>
 <% if logged_in? %>
     <br>
-    <%= button_to 'Add Comment', new_book_comment_path(@book), method: :get %>
+    <%= button_to 'Add Comment', new_review_comment_path(@review), method: :get %>
     <br>
-    <%= button_to 'Comments Thread', book_comments_path(@book), method: :get %>
+    <%= button_to 'Comments Thread', review_comments_path(@review), method: :get %>
     <br>
-    <% if owned_by_user?(@book)%>
-        <%= button_to 'Delete book review', book_path(@book), method: :delete %>
+    <% if owned_by_user?(@review)%>
+        <%= button_to 'Delete book review', review_path(@review), method: :delete %>
         <br>
-        <%= button_to 'Edit book review', edit_book_path(@book), method: :get %>
+        <%= button_to 'Edit book review', edit_review_path(@review), method: :get %>
     <% end %>
     <br>
-    <%= button_to 'Return to Home', books_path, method: :get %>
+    <%= button_to 'Return to Home', reviews_path, method: :get %>
     <br> 
 <% else %>
     <%= button_to 'Return', "/", method: :get %>

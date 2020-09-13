@@ -9,7 +9,7 @@
   
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-        <li><%=  link_to  "New Review", new_book_path, method: :get %></li>
+        <li><%=  link_to  "New Review", new_review_path, method: :get %></li>
         <li><%= link_to 'Your Profile', user_path(current_user), method: :get %></li>
         <li><%= link_to 'Logout', logout_path, method: :delete %></li>
       <% end %>
