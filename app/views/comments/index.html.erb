@@ -1,0 +1,25 @@
+<% Comment.deleted_user %>
+<% unless @comments.count == 0 %>
+    <fieldset> 
+        <legend><h4>Comments Thread:</h4></legend>
+            <% @comments.each do |comment| %>
+                <br>
+                    <ul>
+                        <li><p><%= comment.content %> by <%= comment.user.username %> - <%= comment.normalize_date %></p></li>
+                    </ul>
+            <% end %>
+    <% end %>
+</fieldset>
+
+
+
+<% if logged_in? %>
+    <br>
+    <%= button_to 'Add Comment', new_book_comment_path, method: :get %>
+    <br>
+    <%= button_to 'Return to Home', book_path, method: :get %>
+    <br> 
+<% else %>
+    <%= button_to 'Return', "/", method: :get %>
+    <br>
+<% end %>
