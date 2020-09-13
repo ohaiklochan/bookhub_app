@@ -1,21 +1,26 @@
-<div class="info">
-  <h1>Hello, <%= current_reader.username %>!</h1>
-  <h2>Check out the latest book reviews...</h2>
-</div>
+<h3>Welcome back, <%= current_user.username %>! </h3>
 
-<div class="info">
-  <% @reviews.each do |review| %>
-    <%= link_to "#{review.title}", review_path(review) %>
-    <br>
-    <%= display_book_link_in_review(review) %>
-    Rating: <%= review.rating %>
-    <br>
-    <%= display_reader_link_in_review(review) %>
-    <%= review_date(review) %>
-    <br>
-    <%= review.content.truncate(350) %>
-    <br>
-    <%= display_edit_and_delete_links(review) %>
-    <br>
-  <% end %>
-</div>
+
+
+<% if current_user.books.count == 0 %>
+    <h4> You need to add some Books! </h4>
+<% end %>
+<h2> Here are your Books by rating, in descending order so far: </h2>
+    <% Book.ratings.each do |b| %>
+        <% if b.user_id == current_user.id  %>
+            <ul>
+                <h3><%= link_to b.title, book_path(b) %> - <%= b.rating %> Rating </h3>
+            </ul>
+        <% end %>
+    <% end %>
+
+<%= button_to "Add a new book", new_book_path, method: :get %> 
+<br>
+<br>
+<%= button_to "See other Readers' Books", books_path, method: :get %>
+<br>
+<br>
+<%= button_to "Account Settings", edit_user_path, method: :get %>
+<br>
+<br>
+<%= button_to "Log Out", logout_path, method: 'delete' %>

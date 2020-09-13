@@ -1,0 +1,13 @@
+<%= render partial:'layouts/errors', locals: {object: @user} %>
+
+<h5><%= flash[:error] %></h5>
+    <h2>Edit or Delete your account</h2>
+    <%= form_for @user do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        <%= f.submit "Edit User Name" %>
+    <% end %>
+    <br>
+    <%= button_to 'Deactivate Account', user_path, method: :delete %>
+    <br>
+    <%= button_to 'Return to Profile', user_path, method: :get %>

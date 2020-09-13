@@ -1,17 +1,18 @@
-<h1>Sign Up</h1>
+<h1> Sign up </h1>
+<h5><%= flash[:error] %></h5>
 
-<%= render partial: "layouts/errors", :locals => {:object => @reader} %>
-
-<%= form_for @reader, url: "/signup", :class => "form-group" do |f| %>
-  <%= f.label "Username:" %>
-  <%= f.text_field :username, :class => "form-control" %>
-  <br>
-  <%= f.label "Email:" %>
-  <%= f.email_field :email, :class => "form-control" %>
-  <br>
-  <%= f.label "Password:" %>
-  <%= f.password_field :password, :class => "form-control" %>
-  <br><br>
-  <%= f.submit "Sign Up", :class => "btn btn-secondary" %>
-  <%= link_to "Log in with Google", "/auth/google_oauth2", :class => "btn btn-secondary" %>
+<%= form_for @user do |f| %>
+    <br>
+    <%= f.label 'Username' %>
+    <br>
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label 'password' %>
+    <br>
+    <%= f.password_field :password %>
+    <br>
+    <br>
+    <%= f.submit "Create Account" %>
 <% end %>
+<br>
+<%= button_to "Log In", "/login", method: :get %>
