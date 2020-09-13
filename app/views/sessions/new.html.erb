@@ -1,12 +1,14 @@
-<h1>Log In</h1>
-
-<%= form_for :reader, url: "/login", html: { :class => "new_reader form-group" } do |f| %>
-  <%= f.label "Username:" %>
-  <%= f.text_field :username, :class => "form-control" %>
-  <br>
-  <%= f.label "Password:" %>
-  <%= f.password_field :password, :class => "form-control" %>
-  <br>
-  <%= f.submit "Log In", :class => "btn btn-secondary" %>
-  <%= link_to "Log in with Google", "/auth/google_oauth2", :class => "btn btn-secondary" %>
+<br>
+<h3> Please log in </h3>
+<p> Or <%= link_to "Sign up", '/signup' %></p>
+<p> <%= link_to "Home", '/' %></p>
+<h5><%= flash[:error] %></h5>
+<br> 
+<%= form_tag('/login', method: :post) do %>
+    <h3> Username:  
+        <%= text_field_tag :'user[username]'%><br>
+    <h3> Password: 
+        <%= password_field_tag :'user[password]'%><br>
+        <br>
+    <%= submit_tag "Log In"%>
 <% end %>
