@@ -1,2 +1,5 @@
-<h1>Books#new</h1>
-<p>Find me in app/views/books/new.html.erb</p>
+<h1>Add a Book to the Database</h1>
+
+<%= render partial: "layouts/errors", :locals => {:object => @book} %>
+
+<%= render partial: "form", :locals => {:book => @book} %>

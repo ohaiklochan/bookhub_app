@@ -1,2 +1,27 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="info">
+  <h1><%= @book.title %></h1>
+</div>
+
+<div class="info">
+  Genre(s):
+  <ul>
+    <% @book.genres.each do |genre| %>
+      <%= display_genre(@book, genre) %>
+    <% end %>
+  </ul>
+
+  Written By:
+  <ul>
+    <% @book.authors.each do |author| %>
+      <%= display_author(@book, author) %>
+    <% end %>
+  </ul>
+
+  Description:
+  <p><%= @book.description %></p>
+  <br>
+</div>
+
+  <%= link_to "Read Reviews", book_reviews_path(@book), :class => "btn btn-dark" %>
+  <%= link_to "Write a Review", new_book_review_path(@book), :class => "btn btn-dark" %>
+  <%= edit_book_link %>
