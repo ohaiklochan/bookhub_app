@@ -1,0 +1,18 @@
+<footer class="footer">
+<div id= "welcome">
+    <div>
+        <h1 id= "bookhub"> bookHub </h1>
+         <br>
+    </div>
+<div>
+  <nav>
+  
+    <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+        <li><%=  link_to  "New Review", new_book_path, method: :get %></li>
+        <li><%= link_to 'Your Profile', user_path(current_user), method: :get %></li>
+        <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+      <% end %>
+    </ul>
+  </nav>
+</footer>
