@@ -1,8 +1,7 @@
     <h1><%= @review.title %></h1>
-    <h3>Description: <%= @review.description%>
-    <h3>Review: <%= @review.review%> 
+    <h2>Description: <%= @review.description%></h2>
+    <h2>Review: <%= @review.reviews%> </h2>
     <h3>Rating: <%= @review.rating %></h3>
-    <h2>Description: <%= @review.description %></h2>
     <br>
     <p>Post created by: <h3><%= @review.user.username %></h3></p>
     <h5><%= flash[:error] %></h5>

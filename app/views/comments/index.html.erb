@@ -15,9 +15,9 @@
 
 <% if logged_in? %>
     <br>
-    <%= button_to 'Add Comment', new_book_comment_path, method: :get %>
+    <%= button_to 'Add Comment', new_review_comment_path, method: :get %>
     <br>
-    <%= button_to 'Return to Home', book_path, method: :get %>
+    <%= button_to 'Return to Home', reviews_path, method: :get %>
     <br> 
 <% else %>
     <%= button_to 'Return', "/", method: :get %>

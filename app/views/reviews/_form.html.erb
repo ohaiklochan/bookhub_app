@@ -1,13 +1,13 @@
-<%= render partial:'layouts/errors', locals: {object: @book} %>
+<%= render partial:'layouts/errors', locals: {object: @review} %>
 
 <h5><%= flash[:error] %></h5>
-<%= form_for @book do |f| %>
+<%= form_for @review do |f| %>
     <%= f.label 'What is the title of the book you read?' %>
     <%= f.text_field :title %>
     <br>
     <br>
     <%= f.label 'Please provide a description of the book you read.' %>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
     <br>
     <br>
     <%= f.label 'What would you rate the book?' %>
@@ -15,7 +15,7 @@
     <br>
     <br>
     <%= f.label 'What is your review?' %>
-    <%= f.text_field :review %>
+    <%= f.text_area :reviews %>
     <br>
         <br>
     <%= f.submit "Submit Book" %>
