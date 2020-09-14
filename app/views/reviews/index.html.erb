@@ -19,7 +19,7 @@
 <h3 style="color:red;"> || Other Readers' book reviews by rating! ||</h3>
     <br>
 <% Review.deleted_user %>
-    <% Book.ranked_reviews.each do |b| %>
+    <% Review.ranked_reviews.each do |b| %>
         <% if b.user_id != current_user.id  %>
             <ul>
                 <h3><%= link_to b.title, review_path(b) %> - <%= b.rating %> Rating </h3>

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_09_13_232232) do
     t.string "title"
     t.text "description"
     t.integer "rating"
-    t.text "review"
+    t.text "reviews"
     t.integer "user_id"
   end
 

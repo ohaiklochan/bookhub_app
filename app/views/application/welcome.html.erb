@@ -8,13 +8,13 @@
             <br>
         </div>
     <div>
-        <h3 id="instructions">Sign up or login.</h3>
+        <h3 id="instructions">Sign up or login!</h3>
         <br>
         <div id="button">
             <h5><%= flash[:error] %></h5>
-            <a id="signup" href="/signup"><button>Join the Hub</button></a>
+            <a id="signup" href="/signup"><button>Create An Account</button></a>
             <a id="login" href="/login"><button>Log In</button></a>
-            <h5><%= link_to('Log in with Facebook!', '/auth/facebook') %></h5>
+            <h5><%= button_to('Log in with Google!', '/auth/google_oauth2', method: :get) %></h5>
             <h5> © 2020 bookHub <h5>
         </div>
     </div>

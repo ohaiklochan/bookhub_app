@@ -10,7 +10,7 @@ html {
 }
 
 body {
- background: black;
+ background: grey;
  opacity: 0.7;
  margin: auto;
  max-width: auto;
@@ -24,7 +24,7 @@ h1 {
  font-family: "Courier New", Courier, monospace;
  margin: 20px; 
  font-size: 60px;
- color: mediumslateblue;
+ color: rgb(25, 1, 161);
  text-align: center;
  margin-top: 0;
  margin-bottom: 0; 
@@ -59,7 +59,7 @@ ul {
  margin: 0;
  padding: 0;
  overflow: hidden;
- background-color: rgb(0, 0, 0);
+ background-color: rgb(136, 150, 153);
 }
 
 li {
