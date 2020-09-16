@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
     else
         @reviews = Review.order(sort_column + " ")
     end
-    #   @review = Review.find_by_id(params[:id])
   end
 
   def new
