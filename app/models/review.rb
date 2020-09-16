@@ -4,7 +4,7 @@ class Review < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments 
     scope :alpha, -> { order(:title) }
-    scope :find_by_title, -> (title) { where("title LIKE ?", title) }
+    scope :find_by_title, -> (title) { where("title LIKE ?", title) } #name something else for portfolio
 
     
   
