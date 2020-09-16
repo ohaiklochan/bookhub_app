@@ -2,6 +2,7 @@ class Comment < ApplicationRecord
     belongs_to :user 
     belongs_to :review
     scope :most_recent, -> {Comment.order("created_at DESC")}
+    # review scopes
 
 
     def self.deleted_user

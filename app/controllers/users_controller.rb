@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     else 
       redirect_to new_user_path
       flash[:error] = "Username is not available, please use a unique username."
+      # visit error message display & requirements
     end
   end
   
