@@ -13,20 +13,33 @@
     </ul>
     <% end %>
 <% end %>
+<br> 
+<br>
+    <br>
+<h3 style="color:black;"> || Other Readers' book reviews! ||</h3>
 <br>
 <br>
     <br>
-<h3 style="color:red;"> || Other Readers' book reviews by rating! ||</h3>
-    <br>
-<% Review.deleted_user %>
-    <% Review.ranked_reviews.each do |b| %>
-        <% if b.user_id != current_user.id  %>
-            <ul>
-                <h3><%= link_to b.title, review_path(b) %> - <%= b.rating %> Rating </h3>
-                    <h4>User: <%= User.find(b.user_id).username %></h4>
-            </ul>
+
+<%= form_tag reviews_path, :method => :get do %>
+  <%= label_tag "Search for a Book Review:" %>
+  <%= text_field_tag :title, params[:title] %>
+
+  <%= submit_tag "Search", :title => nil %>
+<% end %>
+
+<% Review.deleted_user %> 
+<% @reviews.each do |review| %>
+      <tr>
+      <% if review.user_id != current_user.id  %>
+      <h3><%= link_to review.title, review_path(review) %> - <%= review.rating %> Rating</h3>
+      </tr>
+
+
         <% end %>
     <% end %>
 <br>
 <br>
+
+
 <h3> © 2020 bookHub <h3>
